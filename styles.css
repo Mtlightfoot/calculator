@@ -17,9 +17,23 @@ h1 {
 .container {
     border: 5px solid #BB2525;
     margin: 0px auto 0px;
-    width: 50%;
+    width: 450px;
     height: 600px;
     align-items: center;
     background-color: #FF6969;
     border-radius: 5px;
+}
+
+.display {
+    margin: 20px 40px;
+    padding: 10px;
+    color: #FFF5E0;
+    letter-spacing: 3px;
+    text-align: right;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 25px;
+    border: solid 3px #FFF5E0;
+    background-color: #BB2525;
+    box-shadow: 0px 2px 0px 0px grey;
 }
