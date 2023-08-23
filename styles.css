@@ -14,17 +14,21 @@ h1 {
     color: #FFF5E0;
 }
 
+p {
+    background-color: transparent;
+}
+
 .container {
     border: 5px solid #BB2525;
     margin: 0px auto 0px;
     width: 450px;
-    height: 600px;
+    height: 650px;
     align-items: center;
     background-color: #FF6969;
     border-radius: 5px;
 }
 
-.display {
+#display {
     margin: 20px 40px;
     padding: 10px;
     color: #FFF5E0;
@@ -36,6 +40,7 @@ h1 {
     border: solid 3px #FFF5E0;
     background-color: #bb2525a4;
     box-shadow: 0px 2px 0px 0px grey;
+    height: 80px;
 }
 
 .buttons {
@@ -43,7 +48,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 5px;
-    height: 500px;
+    height: 480px;
     width: 440px;
     background-color: #FF6969;
     padding: 5px;
@@ -69,4 +74,14 @@ button:hover {
 
 button:active {
     margin-top: 3px;
+}
+
+.previous {
+    background-color: transparent;
+    font-size: 28px;
+}
+
+.current {
+    background-color: transparent;
+    font-size: 35px;
 }

@@ -1,37 +1,82 @@
-// Sum of a, b
-function add(a, b) {
-    return a + b;
-};
+let operator = "";
+let previousValue = "";
+let currentValue = "";
 
-// Subtraction of a, b
-function subtract(a, b) {
-    return a - b;
-};
+document.addEventListener("DOMContentLoaded", function () {
+    // Store all components on HTML in JS
+    let clear = document.querySelector("#clear");
+    let equal = document.querySelector("#equal");
 
-// Multiplication of a, b
-function multiply(a, b) {
-    return a * b;
-};
+    let numbers = document.querySelectorAll("#numbers");
+    let operators = document.querySelectorAll("#operator");
 
-//Division of a, b
-function divide(a, b) {
-    return a / b;
-};
+    let previousScreen = document.querySelector(".previous");
+    let currentScreen = document.querySelector(".current");
 
-let firstNumber = '';
-let operator = '';
-let secondNumber = '';
+    numbers.forEach((number) => number.addEventListener("click", function (e) {
+        handleNumber(e.target.textContent)
+        currentScreen.textContent = currentValue;
+    }))
 
-// A function thats an operator and two numbers and then calls one of the above functions on the numbers.
-function operate(firstNumber, operator, secondNumber) {
-    switch (operator) {
-        case "+":
-            return add(firstNumber, secondNumber);
-        case "-":
-            return subtract(firstNumber, secondNumber);
-        case "*":
-            return multiply(firstNumber, secondNumber);
-        case "/":
-            return divide(firstNumber, secondNumber);
+    operators.forEach((op) => op.addEventListener("click", function (e) {
+        handleOperator(e.target.textContent)
+        previousScreen.textContent = previousValue + " " + operator;
+        currentScreen.textContent = currentValue;
+    }))
+
+    clear.addEventListener("click", function () {
+        previousValue = "";
+        currentValue = "";
+        operator = "";
+        previousScreen.textContent = currentValue;
+        currentScreen.textContent = currentValue;
+    })
+
+    equal.addEventListener("click", function () {
+        if (currentValue != "" && previousValue != "") {
+            calculate();
+            previousScreen.textContent = "";
+            if (previousValue.length <= 5) {
+                currentScreen.textContent = previousValue;
+            } else {
+                currentScreen.textContent = previousValue.slice(0, 5) + "...";
+            }
+        }
+    })
+});
+
+function handleNumber(num) {
+    if (currentValue.length <= 5) {
+        currentValue += num;
     }
-};
+}
+
+function handleOperator(op) {
+    operator = op;
+    previousValue = currentValue;
+    currentValue = "";
+}
+
+function calculate() {
+    previousValue = Number(previousValue);
+    currentValue = Number(currentValue);
+
+    if (operator === "+") {
+        previousValue += currentValue;
+    } else if (operator === "-") {
+        previousValue - + currentValue;
+    } else if (operator === "x") {
+        previousValue *= currentValue;
+    } else if (operator === "/") {
+        previousValue /= currentValue;
+    }
+
+    previousValue = roundNumber(previousValue);
+    previousValue = previousValue.toString();
+    currentValue = previousValue.toString();
+}
+
+
+function roundNumber(num) {
+    return Math.round(num * 1000) / 1000;
+}
